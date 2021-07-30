@@ -76,7 +76,7 @@ def findNearestMRT3(graph, lat, long, MRTdf):
             shortestDist = curDist
             shortestDistIndex = i
             nearestMRTNode = MRT_node
-    shortestRoute = getRoute(graph, orig_node, lat, long, nearestMRTNode)
+    shortestRoute = getRoute(graph, orig_node, nearestMRTNode, lat, long)
     return shortestDist, MRTdf.loc[shortestDistIndex], shortestRoute
 
 def getFileName(fileType):
