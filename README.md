@@ -22,7 +22,7 @@ If an error message along the line of `ImportError: cannot import name 'gcd' fro
 This `.py` script finds the walking route given a list of Latitude and Longitude `.csv` file and the MRT `.geojson` file, retrieved from [Data.gov.sg](https://data.gov.sg/dataset/master-plan-2019-rail-station-layer). <br/><br/>
 Run by executing `python main.py` on your python environment. A simple menu will guide you through the input of files.
 
-__NOTE__: The coordinates of the routes along the shortest path is in __[Lat, Long]__ format. If you need it to be in __[Long, Lat]__ (i.e. Qlik GeoAnalytics) format, Open `main.py` with a text editor, comment out line __39__ & __40__, and uncomment line __41__ & __42__
+__NOTE__: The coordinates of the routes along the shortest path is in __[Lat, Long]__ format. If you need it to be in __[Long, Lat]__ (i.e. Qlik GeoAnalytics) format, Open `main.py` with a text editor, Change `LatLong = True` to `LatLong = False`. 
 * __Input__ (Files __must__ be in the same folder as `main.py`)
     * Coordinates `.csv` file 
         * File __must__ contain fields 'Latitude' and 'Longitude' header

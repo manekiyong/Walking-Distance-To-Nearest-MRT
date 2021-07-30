@@ -30,16 +30,19 @@ def walkingDist(graph, orig_node, mrt_node):
     return length
 
 
-def getRoute(G, orig_node, target_node):
+def getRoute(G, orig_node, target_node, LatLong = True):  # LatLong = True: [Lat, Long]; False: [Long, Lat]
     route = nx.shortest_path(G, orig_node, target_node, 'length')
     routeLatLong = []
+    route.insert(0, orig_node)
     for i in route:
         latlong = []
         node = G.nodes[i]
-        latlong.append(node['y'])
-        latlong.append(node['x'])
-        # latlong.append(node['x'])
-        # latlong.append(node['y'])
+        if LatLong:
+            latlong.append(node['y'])
+            latlong.append(node['x'])
+        else:
+            latlong.append(node['x'])
+            latlong.append(node['y'])
         routeLatLong.append(latlong)
     return str(routeLatLong)
 
