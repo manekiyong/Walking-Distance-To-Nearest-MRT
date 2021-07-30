@@ -30,10 +30,13 @@ def walkingDist(graph, orig_node, mrt_node):
     return length
 
 
-def getRoute(G, orig_node, target_node, LatLong = True):  # LatLong = True: [Lat, Long]; False: [Long, Lat]
+def getRoute(G, orig_node, target_node, ori_lat, ori_long, LatLong = False):  # LatLong = True: [Lat, Long]; False: [Long, Lat]
     route = nx.shortest_path(G, orig_node, target_node, 'length')
     routeLatLong = []
-    route.insert(0, orig_node)
+    if LatLong:
+        routeLatLong.append([ori_lat, ori_long])
+    else:
+        routeLatLong.append([ori_long, ori_lat])
     for i in route:
         latlong = []
         node = G.nodes[i]
@@ -73,7 +76,7 @@ def findNearestMRT3(graph, lat, long, MRTdf):
             shortestDist = curDist
             shortestDistIndex = i
             nearestMRTNode = MRT_node
-    shortestRoute = getRoute(graph, orig_node, nearestMRTNode)
+    shortestRoute = getRoute(graph, orig_node, lat, long, nearestMRTNode)
     return shortestDist, MRTdf.loc[shortestDistIndex], shortestRoute
 
 def getFileName(fileType):
